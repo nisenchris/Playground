@@ -14,11 +14,11 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
-import signInImage from "assets/img/signInImage.png";
+import signInImage from "assets/img/launchdarkly-2.svg";
 
 function SignIn() {
   // Chakra color mode
-  const titleColor = useColorModeValue("teal.300", "teal.200");
+  const titleColor = useColorModeValue("black.300", "teal.200");
   const textColor = useColorModeValue("gray.400", "white");
   return (
     <Flex position='relative' mb='40px'>
@@ -64,7 +64,7 @@ function SignIn() {
                 placeholder='Your email adress'
                 size='lg'
               />
-              <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+              {/* <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                 Password
               </FormLabel>
               <Input
@@ -74,8 +74,8 @@ function SignIn() {
                 type='password'
                 placeholder='Your password'
                 size='lg'
-              />
-              <FormControl display='flex' alignItems='center'>
+              /> */}
+              {/* <FormControl display='flex' alignItems='center'>
                 <Switch id='remember-login' colorScheme='teal' me='10px' />
                 <FormLabel
                   htmlFor='remember-login'
@@ -84,26 +84,26 @@ function SignIn() {
                   fontWeight='normal'>
                   Remember me
                 </FormLabel>
-              </FormControl>
+              </FormControl> */}
               <Button
                 fontSize='10px'
                 type='submit'
-                bg='teal.300'
+                bg='gray.300'
                 w='100%'
                 h='45'
                 mb='20px'
                 color='white'
                 mt='20px'
                 _hover={{
-                  bg: "teal.200",
+                  bg: "gray.500",
                 }}
                 _active={{
-                  bg: "teal.400",
+                  bg: "gray.700",
                 }}>
                 SIGN IN
               </Button>
             </FormControl>
-            <Flex
+            {/* <Flex
               flexDirection='column'
               justifyContent='center'
               alignItems='center'
@@ -115,7 +115,7 @@ function SignIn() {
                   Sign Up
                 </Link>
               </Text>
-            </Flex>
+            </Flex> */}
           </Flex>
         </Flex>
         <Box
