@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-} from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormLabel, Heading, Input } from '@chakra-ui/react';
+import { useLDClient } from 'launchdarkly-react-client-sdk';
 
 const SignIn = ({ setUser }) => {
   const [username, setUsername] = useState('');
   const history = useHistory();
+  const ldClient = useLDClient();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setUser(username);
+    history.push('/dashboard');
+    if (ldClient) {
+       ldClient.identify({
+        kind: 'user',
+        key: username,
+        name: username,
+      });
+    }
+
     history.push('/dashboard');
   };
 
