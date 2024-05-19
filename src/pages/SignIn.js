@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -12,12 +12,12 @@ import {
 
 const SignIn = ({ setUser }) => {
   const [username, setUsername] = useState('');
-  const navigate = useNavigate();
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setUser(username);
-    navigate('/dashboard');
+    history.push('/dashboard');
   };
 
   return (
@@ -29,10 +29,10 @@ const SignIn = ({ setUser }) => {
         <Box my={4} textAlign="left">
           <form onSubmit={handleSubmit}>
             <FormControl isRequired>
-              <FormLabel>Username or Email</FormLabel>
+              <FormLabel>Username</FormLabel>
               <Input
                 type="text"
-                placeholder="Enter your username or email"
+                placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
