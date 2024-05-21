@@ -4,22 +4,38 @@ import { Box, Button, Flex, FormControl, FormLabel, Heading, Input } from '@chak
 import { useLDClient } from 'launchdarkly-react-client-sdk';
 
 const SignIn = ({ setUser }) => {
-  const [username, setUsername] = useState('');
+  const [input, setInput] = useState('');
   const history = useHistory();
   const ldClient = useLDClient();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setUser(username);
-    history.push('/dashboard');
-    if (ldClient) {
-       ldClient.identify({
+    setUser(input);
+
+    let context = {
+      kind: 'user',
+      key: input,
+      name: input,
+    };
+
+    // Check if the input is an email
+    if (input.includes('@')) {
+      const [name] = input.split('@');
+      context = {
         kind: 'user',
-        key: username,
-        name: username,
-      });
+        key: input,
+        name: name,
+        email: input,
+      };
     }
 
+    console.log('LaunchDarkly context:', context);
+
+    if (ldClient) {
+      await ldClient.identify(context);
+    }
+
+    localStorage.setItem('username', input);
     history.push('/dashboard');
   };
 
@@ -32,12 +48,12 @@ const SignIn = ({ setUser }) => {
         <Box my={4} textAlign="left">
           <form onSubmit={handleSubmit}>
             <FormControl isRequired>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Username or Email</FormLabel>
               <Input
                 type="text"
-                placeholder="Enter your username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Enter your username or email"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
               />
             </FormControl>
             <Button width="full" mt={4} type="submit">
