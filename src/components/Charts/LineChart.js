@@ -18,6 +18,11 @@ class LineChart extends React.Component {
     const { flags } = nextProps;
     const chartData = flags.newChartData ? newLineChartData : lineChartData;
 
+    // Log an error when newChartData is true
+    if (flags.newChartData) {
+      console.error("Error: newChartData flag is enabled and causing issues.");
+    }
+
     // Return the new state if it needs to be updated
     if (prevState.chartData !== chartData) {
       return {
