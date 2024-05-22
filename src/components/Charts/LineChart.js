@@ -1,6 +1,8 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { lineChartData, lineChartOptions } from "variables/charts";
+import { newLineChartData } from "variables/newChart";
+import { withLDConsumer } from "launchdarkly-react-client-sdk";
 
 class LineChart extends React.Component {
   constructor(props) {
@@ -8,15 +10,21 @@ class LineChart extends React.Component {
 
     this.state = {
       chartData: [],
-      chartOptions: {},
+      chartOptions: lineChartOptions,
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      chartData: lineChartData,
-      chartOptions: lineChartOptions,
-    });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const { flags } = nextProps;
+    const chartData = flags.newChartData ? newLineChartData : lineChartData;
+
+    // Return the new state if it needs to be updated
+    if (prevState.chartData !== chartData) {
+      return {
+        chartData,
+      };
+    }
+    return null; // No state update needed
   }
 
   render() {
@@ -32,4 +40,4 @@ class LineChart extends React.Component {
   }
 }
 
-export default LineChart;
+export default withLDConsumer()(LineChart);

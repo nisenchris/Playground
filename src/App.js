@@ -8,13 +8,11 @@ function App() {
   const [user, setUser] = useState(null);
 
   return (
-    <ChakraProvider>
       <Switch>
         <Route path="/signin" render={(props) => <SignIn setUser={setUser} {...props} />} />
         <Route path="/dashboard" render={(props) => <Dashboard user={user} setUser={setUser} {...props} />} />
         <Redirect from="/" to="/signin" />
       </Switch>
-    </ChakraProvider>
   );
 }
 
