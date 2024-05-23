@@ -44,7 +44,7 @@ const Projects = ({ title, description }) => {
             description={
               "D&D owns the airwaves! Get the latest news and gamer humor from the official D&D podcast."
             }
-            buttonName={"Read More"}
+            linkName={"Read More"}
           />
           <ProjectCard
             image={imageDNDVirtualPlayWeekends}
@@ -52,7 +52,7 @@ const Projects = ({ title, description }) => {
             description={
               "Connect with your friends around the world and play D&D with some of the best Dungeon Masters anywhere!"
             }
-            buttonName={"Read More"}
+            linkName={"Read More"}
           />
           <ProjectCard
             image={imageTomTotenbergSwift}
@@ -60,7 +60,7 @@ const Projects = ({ title, description }) => {
             description={
               "Join our D&D campaign with a GM who will shake it off, lead you through wildest dreams, love stories with dragons, and ensure you belong with us in this enchanted adventure!"
             }
-            buttonName={"Purchase"}
+            linkName={"Purchase"}
           />
         </Grid>
       </CardBody>

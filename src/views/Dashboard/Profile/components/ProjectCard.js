@@ -1,15 +1,15 @@
 // Chakra imports
 import {
   Box,
-  Button,
   Flex,
   Image,
   Text,
+  Link,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
 
-const ProjectCard = ({ image, name, category, description, buttonName }) => {
+const ProjectCard = ({ image, name, category, description, linkName }) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
 
@@ -55,16 +55,20 @@ const ProjectCard = ({ image, name, category, description, buttonName }) => {
           </Text>
         </Box>
         <Flex justifyContent="space-between" mt="auto">
-          <Button
-            variant="outline"
-            colorScheme="teal"
-            minW="110px"
-            h="36px"
+          <Link
+            href="#"
+            bg="inherit"
+            py="4px"
+            px="8px"
+            borderRadius="inherit"
+            _hover={{
+              textDecoration: "underline",
+            }}
             fontSize="xs"
-            px="1.5rem"
+            fontWeight="bold"
           >
-            {buttonName}
-          </Button>
+            {linkName}
+          </Link>
         </Flex>
       </Flex>
     </Flex>
