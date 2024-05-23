@@ -1,12 +1,5 @@
 // Chakra imports
-import {
-  Flex,
-  Stat,
-  StatHelpText,
-  StatLabel,
-  StatNumber,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import {  Flex,  Stat,  StatHelpText,  StatLabel,  StatNumber } from "@chakra-ui/react";
 // Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
@@ -14,8 +7,6 @@ import IconBox from "components/Icons/IconBox";
 import React from "react";
 
 const MiniStatistics = ({ title, amount, percentage, icon }) => {
-  const iconTeal = useColorModeValue("teal.300", "teal.300");
-  const textColor = useColorModeValue("gray.700", "white");
 
   return (
     <Card minH='83px'>
@@ -30,7 +21,7 @@ const MiniStatistics = ({ title, amount, percentage, icon }) => {
               {title}
             </StatLabel>
             <Flex>
-              <StatNumber fontSize='lg' color={textColor}>
+              <StatNumber fontSize='lg' >
                 {amount}
               </StatNumber>
               <StatHelpText
@@ -45,7 +36,7 @@ const MiniStatistics = ({ title, amount, percentage, icon }) => {
               </StatHelpText>
             </Flex>
           </Stat>
-          <IconBox as='box' h={"45px"} w={"45px"} bg={iconTeal}>
+          <IconBox as='box' h={"45px"} w={"45px"} bg={"teal.300"}>
             {icon}
           </IconBox>
         </Flex>
