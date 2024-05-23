@@ -1,24 +1,21 @@
 // Chakra imports
-import {
-  Flex,
-  Grid,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Flex, Grid, Text } from "@chakra-ui/react";
 // Assets
 import imageDNDDragonTalk from "assets/img/DnD_Articles_DragonTalk_1.avif";
-import imageDNDVirtualPlayWeekends from "assets/img/dnd_vpw_othermedia.avif"
-import imageTomTotenbergSwift from "assets/img/TomTotenbergSwift.jpeg"
+import imageDNDVirtualPlayWeekends from "assets/img/dnd_vpw_othermedia.avif";
+import imageTomTotenbergSwift from "assets/img/TomTotenbergSwift.jpeg";
 // Custom components
 import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
 import React from "react";
-import { FaPlus } from "react-icons/fa";
 import ProjectCard from "./ProjectCard";
+import PurchaseCard from "./PurchaseCard";
+
+import { useFlags } from "launchdarkly-react-client-sdk";
 
 const Projects = ({ title, description }) => {
-  // Chakra color mode
+  const { purchaseCard } = useFlags();
 
   return (
     <Card p="16px" my="24px" bg="gray.700">
@@ -54,14 +51,26 @@ const Projects = ({ title, description }) => {
             }
             linkName={"Read More"}
           />
-          <ProjectCard
-            image={imageTomTotenbergSwift}
-            category={"D&D with Tom Swift"}
-            description={
-              "Join our D&D campaign with a GM who will shake it off, lead you through wildest dreams, love stories with dragons, and ensure you belong with us in this enchanted adventure!"
-            }
-            linkName={"Purchase"}
-          />
+          {purchaseCard ? (
+            <PurchaseCard
+              image={imageTomTotenbergSwift}
+              name={"D&D with Tom Swift"}
+              description={
+                "Join our D&D campaign with a GM who will shake it off, lead you through wildest dreams, love stories with dragons, and ensure you belong with us in this enchanted adventure!"
+              }
+              isNew="true"
+              onSale="true"
+            />
+          ) : (
+            <ProjectCard
+              image={imageTomTotenbergSwift}
+              category={"D&D with Tom Swift"}
+              description={
+                "Join our D&D campaign with a GM who will shake it off, lead you through wildest dreams, love stories with dragons, and ensure you belong with us in this enchanted adventure!"
+              }
+              linkName={"Purchase"}
+            />
+          )}
         </Grid>
       </CardBody>
     </Card>

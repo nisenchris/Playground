@@ -80,7 +80,7 @@ const Dashboard = ({ user, setUser }) => {
           minHeight="100vh"
         >
           <PanelContent w="75%">
-            <AdminNavbar/>
+            <AdminNavbar />
             <PanelContainer>
               <SimpleGrid
                 columns={{ sm: 1, md: 2, xl: 4 }}
