@@ -20,7 +20,11 @@ import avatar1 from "assets/img/avatars/avatar1.png";
 import avatar2 from "assets/img/avatars/avatar2.png";
 import avatar3 from "assets/img/avatars/avatar3.png";
 // Custom Icons
-import { ProfileIcon, SettingsIcon } from "components/Icons/Icons";
+import {
+  ProfileIcon,
+  HomeIcon,
+  LaunchDarklyIcon,
+} from "components/Icons/Icons";
 // Custom Components
 import { ItemContent } from "components/Menu/ItemContent";
 import SidebarResponsive from "components/Sidebar/SidebarResponsive";
@@ -93,7 +97,7 @@ export default function HeaderLinks(props) {
           borderRadius="inherit"
         />
       </InputGroup>
-      <NavLink to="/auth/signin">
+      <NavLink to="/signin">
         <Button
           ms="0px"
           px="0px"
@@ -115,62 +119,56 @@ export default function HeaderLinks(props) {
             )
           }
         >
-          <Text display={{ sm: "none", md: "flex" }}>Sign In</Text>
+          <Text display={{ sm: "none", md: "flex" }}>Sign Out</Text>
         </Button>
       </NavLink>
-      <SidebarResponsive
-        logoText={props.logoText}
-        secondary={props.secondary}
-        routes={routes}
-        // logo={logo}
-        {...rest}
-      />
-      <SettingsIcon
-        cursor="pointer"
-        ms={{ base: "16px", xl: "0px" }}
-        me="16px"
-        ref={settingsRef}
-        onClick={props.onOpen}
-        color={navbarIcon}
-        w="18px"
-        h="18px"
-      />
-      <Menu>
-        <MenuButton>
-          <BellIcon color={navbarIcon} w="18px" h="18px" />
-        </MenuButton>
-        <MenuList p="16px 8px">
-          <Flex flexDirection="column">
-            <MenuItem borderRadius="8px" mb="10px">
-              <ItemContent
-                time="13 minutes ago"
-                info="from Alicia"
-                boldInfo="New Message"
-                aName="Alicia"
-                aSrc={avatar1}
-              />
-            </MenuItem>
-            <MenuItem borderRadius="8px" mb="10px">
-              <ItemContent
-                time="2 days ago"
-                info="by Josh Henry"
-                boldInfo="New Album"
-                aName="Josh Henry"
-                aSrc={avatar2}
-              />
-            </MenuItem>
-            <MenuItem borderRadius="8px">
-              <ItemContent
-                time="3 days ago"
-                info="Payment succesfully completed!"
-                boldInfo=""
-                aName="Kara"
-                aSrc={avatar3}
-              />
-            </MenuItem>
-          </Flex>
-        </MenuList>
-      </Menu>
+
+      <NavLink to="/">
+        <Button
+          ms="0px"
+          px="0px"
+          me={{ sm: "2px", md: "16px" }}
+          color={navbarIcon}
+          variant="transparent-with-icon"
+          rightIcon={
+            document.documentElement.dir ? (
+              ""
+            ) : (
+              <LaunchDarklyIcon color={navbarIcon} w="22px" h="22px" me="0px" />
+            )
+          }
+          leftIcon={
+            document.documentElement.dir ? (
+              <LaunchDarklyIcon color={navbarIcon} w="22px" h="22px" me="0px" />
+            ) : (
+              ""
+            )
+          }
+        ></Button>
+      </NavLink>
+      <NavLink to="/Dashboard">
+        <Button
+          ms="0px"
+          px="0px"
+          me={{ sm: "2px", md: "16px" }}
+          color={navbarIcon}
+          variant="transparent-with-icon"
+          rightIcon={
+            document.documentElement.dir ? (
+              ""
+            ) : (
+              <HomeIcon color={navbarIcon} w="22px" h="22px" me="0px" />
+            )
+          }
+          leftIcon={
+            document.documentElement.dir ? (
+              <HomeIcon color={navbarIcon} w="22px" h="22px" me="0px" />
+            ) : (
+              ""
+            )
+          }
+        ></Button>
+      </NavLink>
     </Flex>
   );
 }

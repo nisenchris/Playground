@@ -16,6 +16,7 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
   Link,
+  Spacer,
 } from "@chakra-ui/react";
 // things I added // Kika
 import MiniStatistics from "component/MiniStatistics";
@@ -36,6 +37,7 @@ import ActiveUsers from "views/Dashboard/Dashboard/components/ActiveUsers";
 import BarChart from "components/Charts/BarChart";
 import LineChart from "components/Charts/LineChart";
 import SalesOverview from "views/Dashboard/Dashboard/components/SalesOverview";
+import AdminNavbar from "components/Navbars/AdminNavbar";
 
 // LD
 import { useFlags } from "launchdarkly-react-client-sdk";
@@ -77,23 +79,8 @@ const Dashboard = ({ user, setUser }) => {
           bg="gray.200"
         >
           <PanelContent w="75%">
+            <AdminNavbar/>
             <PanelContainer>
-              <Box textAlign="right">
-                <Button mt={4} onClick={handleSignOut} bg="gray.400">
-                  Sign Out
-                </Button>
-                <Text fontWeight="bold" mt={4}>
-                  {user}
-                </Text>
-              </Box>
-
-              <Box mb={{ sm: "8px", md: "0px" }}>
-                <Breadcrumb>
-                  <BreadcrumbItem color={mainText} fontWeight="bold">
-                    <BreadcrumbLink href="#">Dashboard</BreadcrumbLink>
-                  </BreadcrumbItem>
-                </Breadcrumb>
-              </Box>
               <SimpleGrid
                 columns={{ sm: 1, md: 2, xl: 4 }}
                 spacing="24px"

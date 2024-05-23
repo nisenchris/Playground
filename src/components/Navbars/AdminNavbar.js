@@ -54,7 +54,7 @@ export default function AdminNavbar(props) {
     }
   if (props.secondary) {
     navbarBackdrop = "none";
-    navbarPosition = "absolute";
+    navbarPosition = "fixed";
     mainText = "white";
     secondaryText = "white";
     secondaryMargin = "22px";
@@ -71,6 +71,9 @@ export default function AdminNavbar(props) {
   return (
     <Flex
       position={navbarPosition}
+      top="0" // Fix to the top
+      width="75%" // Full width
+      zIndex="1000" // Ensure it stays on top of other elements
       boxShadow={navbarShadow}
       bg={navbarBg}
       borderColor={navbarBorder}
@@ -79,20 +82,18 @@ export default function AdminNavbar(props) {
       borderWidth="1.5px"
       borderStyle="solid"
       transitionDelay="0s, 0s, 0s, 0s"
-      transitionDuration=" 0.25s, 0.25s, 0.25s, 0s"
-      transition-property="box-shadow, background-color, filter, border"
+      transitionDuration="0.25s, 0.25s, 0.25s, 0s"
+      transitionProperty="box-shadow, background-color, filter, border"
       transitionTimingFunction="linear, linear, linear, linear"
-      alignItems={{ xl: "center" }}
+      alignItems="center"
       borderRadius="16px"
       display="flex"
       minH="75px"
-      justifyContent={{ xl: "center" }}
+      justifyContent="space-between"
       lineHeight="25.6px"
       mx="auto"
       mt={secondaryMargin}
       pb="8px"
-      left={document.documentElement.dir === "rtl" ? "30px" : ""}
-      right={document.documentElement.dir === "rtl" ? "" : "30px"}
       px={{
         sm: paddingX,
         md: "30px",
@@ -101,8 +102,6 @@ export default function AdminNavbar(props) {
         xl: "12px",
       }}
       pt="8px"
-      top="18px"
-      w={{ sm: "calc(100vw - 30px)", xl: "calc(100vw - 75px - 275px)" }}
     >
       <Flex
         w="100%"
@@ -119,7 +118,6 @@ export default function AdminNavbar(props) {
                 Pages
               </BreadcrumbLink>
             </BreadcrumbItem>
-
             <BreadcrumbItem color={mainText}>
               <BreadcrumbLink href="#" color={mainText}>
                 {brandText}
