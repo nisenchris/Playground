@@ -7,16 +7,17 @@ import {
   Heading,
   Text,
   Portal,
+  Grid,
   ChakraProvider,
 } from "@chakra-ui/react";
 
-// christian - kika mios
+// Components and Layouts
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import MainPanel from "../components/Layout/MainPanel";
 import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
-
 import theme from "theme/theme.js";
+import Projects from "views/Dashboard/Profile/components/Projects";
 
 const LandingPage = () => {
   return (
@@ -24,42 +25,25 @@ const LandingPage = () => {
       <MainPanel
         w={{
           base: "100%",
-          xl: "calc(100%)",
+          xl: "100%",
         }}
       >
         <Flex
           flexDirection="column"
           pt={{ base: "120px", md: "75px" }}
-          bg="gray.200"
+          bg="gray.800" // Set the background to dark
+          color="white" // Set text color to white for better contrast
+          minHeight="100vh" 
         >
-          <PanelContent w="75%">
-            <AdminNavbar/>
-            <PanelContainer>
-              <Box
-                textAlign="center"
-                p={8}
-                bg="white"
-                boxShadow="md"
-                rounded="lg"
-              >
-                <Heading as="h1" size="2xl" mb={4}>
-                  Welcome to Our App
-                </Heading>
-                <Text fontSize="lg" mb={6}>
-                  This is the landing page. Learn more about our app and its
-                  features.
-                </Text>
-                <Box>
-                  <Link to="/signin">
-                    <Button colorScheme="blue" mr={4}>
-                      Sign In
-                    </Button>
-                  </Link>
-                  <Link to="/dashboard">
-                    <Button colorScheme="green">Dashboard</Button>
-                  </Link>
-                </Box>
-              </Box>
+          <PanelContent>
+            <AdminNavbar />
+            <PanelContainer w="100%">
+              <Projects
+                title={"BEGIN YOUR ADVENTURE!"}
+                description={
+                  "Dungeons & Dragons takes you and your friends on epic journeys. Become characters you create, battle deadly foes, uncover secrets, find treasure, and make memories that last a lifetime."
+                }
+              />
             </PanelContainer>
           </PanelContent>
         </Flex>

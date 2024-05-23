@@ -1,19 +1,14 @@
 // Chakra imports
 import {
-  Button,
   Flex,
   Grid,
-  Icon,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
-import avatar2 from "assets/img/avatars/avatar2.png";
-import avatar4 from "assets/img/avatars/avatar4.png";
-import avatar6 from "assets/img/avatars/avatar6.png";
-import imageArchitect1 from "assets/img/ImageArchitect1.png";
-import imageArchitect2 from "assets/img/ImageArchitect2.png";
-import imageArchitect3 from "assets/img/ImageArchitect3.png";
+import imageDNDDragonTalk from "assets/img/DnD_Articles_DragonTalk_1.avif";
+import imageDNDVirtualPlayWeekends from "assets/img/dnd_vpw_othermedia.avif"
+import imageTomTotenbergSwift from "assets/img/TomTotenbergSwift.jpeg"
 // Custom components
 import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
@@ -24,66 +19,49 @@ import ProjectCard from "./ProjectCard";
 
 const Projects = ({ title, description }) => {
   // Chakra color mode
-  const textColor = useColorModeValue("gray.700", "white");
 
   return (
-    <Card p='16px' my='24px'>
-      <CardHeader p='12px 5px' mb='12px'>
-        <Flex direction='column'>
-          <Text fontSize='lg' color={textColor} fontWeight='bold'>
+    <Card p="16px" my="24px" bg="gray.700">
+      <CardHeader p="12px 5px" mb="12px">
+        <Flex direction="column">
+          <Text fontSize="lg" color="white" fontWeight="bold">
             {title}
           </Text>
-          <Text fontSize='sm' color='gray.500' fontWeight='400'>
+          <Text fontSize="sm" color="gray.500" fontWeight="400">
             {description}
           </Text>
         </Flex>
       </CardHeader>
-      <CardBody px='5px'>
+      <CardBody px="5px">
         <Grid
-          templateColumns={{ sm: "1fr", md: "1fr 1fr", xl: "repeat(4, 1fr)" }}
+          templateColumns={{ sm: "1fr", md: "1fr 1fr", xl: "repeat(3, 1fr)" }}
           templateRows={{ sm: "1fr 1fr 1fr auto", md: "1fr 1fr", xl: "1fr" }}
-          gap='24px'>
+          gap="24px"
+        >
           <ProjectCard
-            image={imageArchitect1}
-            name={"Project #1"}
-            category={"Modern"}
+            image={imageDNDDragonTalk}
+            category={"Dragon Talk"}
             description={
-              "As Uber works through a huge amount of internal management turmoil."
+              "D&D owns the airwaves! Get the latest news and gamer humor from the official D&D podcast."
             }
-            avatars={[avatar2, avatar4, avatar6]}
+            buttonName={"Read More"}
           />
           <ProjectCard
-            image={imageArchitect2}
-            name={"Project #2"}
-            category={"Scandinavian"}
+            image={imageDNDVirtualPlayWeekends}
+            category={"Virtual Play Weekends"}
             description={
-              "Music is something that every person has his or her own specific opinion about."
+              "Connect with your friends around the world and play D&D with some of the best Dungeon Masters anywhere!"
             }
-            avatars={[avatar4, avatar2, avatar6, avatar4]}
+            buttonName={"Read More"}
           />
           <ProjectCard
-            image={imageArchitect3}
-            name={"Project #3"}
-            category={"Minimalist"}
+            image={imageTomTotenbergSwift}
+            category={"D&D with Tom Swift"}
             description={
-              "Different people have different taste, especially various types of music."
+              "Join our D&D campaign with a GM who will shake it off, lead you through wildest dreams, love stories with dragons, and ensure you belong with us in this enchanted adventure!"
             }
-            avatars={[avatar2, avatar4, avatar6]}
+            buttonName={"Purchase"}
           />
-          <Button
-            p='0px'
-            bg='transparent'
-            color='gray.500'
-            border='1px solid lightgray'
-            borderRadius='15px'
-            minHeight={{ sm: "200px", md: "100%" }}>
-            <Flex direction='column' justifyContent='center' align='center'>
-              <Icon as={FaPlus} fontSize='lg' mb='12px' />
-              <Text fontSize='lg' fontWeight='bold'>
-                Create a New Project
-              </Text>
-            </Flex>
-          </Button>
         </Grid>
       </CardBody>
     </Card>

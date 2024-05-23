@@ -76,7 +76,8 @@ const Dashboard = ({ user, setUser }) => {
         <Flex
           flexDirection="column"
           pt={{ base: "120px", md: "75px" }}
-          bg="gray.200"
+          bg="gray.100"
+          minHeight="100vh"
         >
           <PanelContent w="75%">
             <AdminNavbar/>
