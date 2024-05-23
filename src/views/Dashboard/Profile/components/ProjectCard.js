@@ -1,17 +1,18 @@
 // Chakra imports
-import {
-  Box,
-  Flex,
-  Image,
-  Text,
-  Link,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Image, Text, Link } from "@chakra-ui/react";
 import React from "react";
 
+import { useLDClient } from "launchdarkly-react-client-sdk";
+
 const ProjectCard = ({ image, name, category, description, linkName }) => {
-  // Chakra color mode
-  const textColor = useColorModeValue("gray.700", "white");
+  const ldClient = useLDClient();
+
+  const handlePurchaseClick = () => {
+    if (ldClient) {
+      ldClient.track("Purchase Button Click", { cardType: "ProjectCard" });
+      console.log('Event sent: Purchase Button Click', { cardType: "ProjectCard" });
+    }
+  };
 
   return (
     <Flex
@@ -47,7 +48,7 @@ const ProjectCard = ({ image, name, category, description, linkName }) => {
           <Text fontSize="md" color="gray.500" fontWeight="600" mb="10px">
             {name}
           </Text>
-          <Text fontSize="xl" color={textColor} fontWeight="bold" mb="10px">
+          <Text fontSize="xl" color="white" fontWeight="bold" mb="10px">
             {category}
           </Text>
           <Text fontSize="md" color="gray.500" fontWeight="400" mb="20px">
@@ -56,7 +57,6 @@ const ProjectCard = ({ image, name, category, description, linkName }) => {
         </Box>
         <Flex justifyContent="space-between" mt="auto">
           <Link
-            href="#"
             bg="inherit"
             py="4px"
             px="8px"
@@ -66,6 +66,7 @@ const ProjectCard = ({ image, name, category, description, linkName }) => {
             }}
             fontSize="xs"
             fontWeight="bold"
+            onClick={handlePurchaseClick}
           >
             {linkName}
           </Link>

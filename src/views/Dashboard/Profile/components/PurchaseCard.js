@@ -1,15 +1,17 @@
-import React from 'react';
-import {
-  Box,
-  Image,
-  Badge,
-  Text,
-  Flex,
-  Button,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import React from "react";
+// Chakra imports
+import { Box, Image, Badge, Flex, Button } from "@chakra-ui/react";
+import { useLDClient } from "launchdarkly-react-client-sdk";
 
 const ProductCard = ({ image, name, description, isNew, onSale }) => {
+  const ldClient = useLDClient();
+
+  const handlePurchaseClick = () => {
+    if (ldClient) {
+      ldClient.track("Purchase Button Click", { cardType: "PurchaseCard" });
+      console.log('Event sent: Purchase Button Click', { cardType: "PurchaseCard" });
+    }
+  };
 
   return (
     <Box
@@ -20,10 +22,8 @@ const ProductCard = ({ image, name, description, isNew, onSale }) => {
       _hover={{ boxShadow: 'lg' }}
       transition="all 0.3s"
       color="white"
-      
     >
       <Image src={image} alt={name} />
-
       <Box p="6">
         <Box d="flex" alignItems="baseline">
           {isNew && (
@@ -37,7 +37,6 @@ const ProductCard = ({ image, name, description, isNew, onSale }) => {
             </Badge>
           )}
         </Box>
-
         <Box
           mt="1"
           fontWeight="semibold"
@@ -47,13 +46,11 @@ const ProductCard = ({ image, name, description, isNew, onSale }) => {
         >
           {name}
         </Box>
-
         <Box fontSize="sm" mt="2">
           {description}
         </Box>
-
         <Flex mt="4" justifyContent="space-between" alignItems="center">
-          <Button colorScheme="teal" variant="solid">
+          <Button colorScheme="teal" variant="solid" onClick={handlePurchaseClick}>
             Purchase
           </Button>
         </Flex>
