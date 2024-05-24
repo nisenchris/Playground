@@ -52,7 +52,7 @@ Follow these steps to set up and run the project locally on your machine:
 ### Step 4: Create an Environment File
 
 1. Create a `.env` file in the root directory of the project.
-2. Add LaunchDarkly's SDK Key as an environment variables. 
+2. Add LaunchDarkly's SDK Key as an environment variable. 
 
    ```env
    REACT_APP_LAUNCHDARKLY_CLIENTSIDE_ID=your-client-side-id
