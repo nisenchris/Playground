@@ -8,9 +8,11 @@ const ProductCard = ({ image, name, category, description, linkName }) => {
   const ldClient = useLDClient();
 
   const handlePurchaseClick = () => {
-    if (ldClient) {
+    if (linkName === "Purchase") {
       ldClient.track("Purchase Button Click", { cardType: "ProductCard" });
-      console.log('Event sent: Purchase Button Click', { cardType: "ProductCard" });
+      console.log("Event sent: Purchase Button Click", {
+        cardType: "ProductCard",
+      });
     }
   };
 
