@@ -18,10 +18,10 @@ import AdminNavbar from "components/Navbars/AdminNavbar";
 import MiniStatistics from "components/Card/MiniStatistics";
 
 // Chart components
-import ActiveUsers from "views/Dashboard/Dashboard/components/ActiveUsers";
+import ActiveUsers from "components/Charts/ActiveUsers";
 import BarChart from "components/Charts/BarChart";
 import LineChart from "components/Charts/LineChart";
-import SalesOverview from "views/Dashboard/Dashboard/components/SalesOverview";
+import SalesOverview from "components/Charts/SalesOverview";
 
 // LaunchDarkly SDK to access feature flags
 import { useFlags } from "launchdarkly-react-client-sdk";
