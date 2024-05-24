@@ -6,7 +6,7 @@ import React from "react";
 import { useLDClient } from "launchdarkly-react-client-sdk";
 
 const ProductCard = ({ image, name, category, description, linkName }) => {
-  // Access the LaunchDarkly client to track custom events
+  // LaunchDarkly client
   const ldClient = useLDClient();
 
   const handlePurchaseClick = () => {

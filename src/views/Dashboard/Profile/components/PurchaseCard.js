@@ -1,13 +1,16 @@
 import React from "react";
 // Chakra imports
 import { Box, Image, Badge, Flex, Button } from "@chakra-ui/react";
+// LaunchDarkly SDK
 import { useLDClient } from "launchdarkly-react-client-sdk";
 
-const ProductCard = ({ image, name, description, isNew, onSale }) => {
+const PurchaseCard = ({ image, name, description, isNew, onSale }) => {
+  // LaunchDarkly client 
   const ldClient = useLDClient();
 
   const handlePurchaseClick = () => {
     if (ldClient) {
+      // Track a custom event in LaunchDarkly
       ldClient.track("Purchase Button Click", { cardType: "PurchaseCard" });
       console.log('Event sent: Purchase Button Click', { cardType: "PurchaseCard" });
     }
@@ -50,6 +53,7 @@ const ProductCard = ({ image, name, description, isNew, onSale }) => {
           {description}
         </Box>
         <Flex mt="4" justifyContent="space-between" alignItems="center">
+          {/* Handle click event */}
           <Button colorScheme="teal" variant="solid" onClick={handlePurchaseClick}>
             Purchase
           </Button>
@@ -59,4 +63,4 @@ const ProductCard = ({ image, name, description, isNew, onSale }) => {
   );
 };
 
-export default ProductCard;
+export default PurchaseCard;
