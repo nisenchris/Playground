@@ -7,7 +7,7 @@ import MainPanel from "../components/Layout/MainPanel";
 import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
 import theme from "theme/theme.js";
-import Products from "views/Dashboard/Profile/components/Products";
+import Products from "components/Card/Products";
 
 const LandingPage = () => {
   return (
