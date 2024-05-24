@@ -55,7 +55,7 @@ Follow these steps to set up and run the project locally on your machine:
 2. Add LaunchDarkly's SDK Key as an environment variables. 
 
    ```env
-   REACT_APP_CLIENT_SIDE_ID=your-client-side-id
+   REACT_APP_LAUNCHDARKLY_CLIENTSIDE_ID=your-client-side-id
    ```
 
 ### Step 5: Start the Development Server
