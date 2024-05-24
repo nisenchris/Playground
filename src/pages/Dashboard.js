@@ -1,69 +1,31 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import {
-  Box,
-  Button,
-  Grid,
-  Flex,
-  SimpleGrid,
-  Heading,
-  Text,
-  useColorModeValue,
-  ChakraProvider,
-  Portal,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  Link,
-  Spacer,
-} from "@chakra-ui/react";
-// things I added // Kika
-import MiniStatistics from "component/MiniStatistics";
+// Chakra imports
+import { Grid, Flex, SimpleGrid, ChakraProvider } from "@chakra-ui/react";
+import theme from "theme/theme.js";
+// Custom Components
 import {
   CartIcon,
   DocumentIcon,
   GlobeIcon,
   WalletIcon,
 } from "components/Icons/Icons.js";
-
 import MainPanel from "../components/Layout/MainPanel";
 import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
-
-import theme from "theme/theme.js";
-
+import AdminNavbar from "components/Navbars/AdminNavbar";
+import MiniStatistics from "components/Card/MiniStatistics";
+// Chart components
 import ActiveUsers from "views/Dashboard/Dashboard/components/ActiveUsers";
 import BarChart from "components/Charts/BarChart";
 import LineChart from "components/Charts/LineChart";
 import SalesOverview from "views/Dashboard/Dashboard/components/SalesOverview";
-import AdminNavbar from "components/Navbars/AdminNavbar";
 
-// LD
+// Importing useFlags from LaunchDarkly SDK to access feature flags
 import { useFlags } from "launchdarkly-react-client-sdk";
 
-const Dashboard = ({ user, setUser }) => {
+const Dashboard = () => {
+  // Destructuring the lineChart flag from LaunchDarkly feature flags
   const { lineChart } = useFlags();
-
-  // Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
-  let mainText = useColorModeValue("gray.700", "gray.200");
-  let secondaryText = useColorModeValue("gray.400", "gray.200");
-  let navbarPosition = "absolute";
-  let navbarFilter = "none";
-  let navbarBackdrop = "blur(21px)";
-  let navbarShadow = "none";
-  let navbarBg = "none";
-  let navbarBorder = "transparent";
-  let secondaryMargin = "0px";
-  let paddingX = "15px";
-
-  const history = useHistory();
-  const iconBoxInside = useColorModeValue("white", "white");
-
-  const handleSignOut = () => {
-    setUser(null);
-    history.push("/signin");
-  };
 
   return (
     <ChakraProvider theme={theme} resetCss={false}>
@@ -87,37 +49,30 @@ const Dashboard = ({ user, setUser }) => {
                 spacing="24px"
                 my="26px"
               >
+                {/* Some content for the dashboard: Mini statistics cards */}
                 <MiniStatistics
                   title={"Today's Moneys"}
                   amount={"$53,000"}
                   percentage={55}
-                  icon={
-                    <WalletIcon h={"24px"} w={"24px"} color={iconBoxInside} />
-                  }
+                  icon={<WalletIcon h={"24px"} w={"24px"} color={"white"} />}
                 />
                 <MiniStatistics
                   title={"Today's Users"}
                   amount={"2,300"}
                   percentage={5}
-                  icon={
-                    <GlobeIcon h={"24px"} w={"24px"} color={iconBoxInside} />
-                  }
+                  icon={<GlobeIcon h={"24px"} w={"24px"} color={"white"} />}
                 />
                 <MiniStatistics
                   title={"New Clients"}
                   amount={"+3,020"}
                   percentage={-14}
-                  icon={
-                    <DocumentIcon h={"24px"} w={"24px"} color={iconBoxInside} />
-                  }
+                  icon={<DocumentIcon h={"24px"} w={"24px"} color={"white"} />}
                 />
                 <MiniStatistics
                   title={"Total Sales"}
                   amount={"$173,000"}
                   percentage={8}
-                  icon={
-                    <CartIcon h={"24px"} w={"24px"} color={iconBoxInside} />
-                  }
+                  icon={<CartIcon h={"24px"} w={"24px"} color={"white"} />}
                 />
               </SimpleGrid>
               <Grid
@@ -131,6 +86,7 @@ const Dashboard = ({ user, setUser }) => {
                   percentage={23}
                   chart={<BarChart />}
                 />
+                {/* Line Chart component only displays when lineChart flag is enabled */}
                 {lineChart ? (
                   <SalesOverview
                     title={"Sales Overview"}
