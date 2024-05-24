@@ -5,9 +5,12 @@ import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import { asyncWithLDProvider } from "launchdarkly-react-client-sdk";
 
+const clientSideID = process.env.REACT_APP_LAUNCHDARKLY_CLIENTSIDE_ID;
 
-  const renderApp = async () => {
-    const LDProvider = await asyncWithLDProvider({ clientSideID: '66469367720b520ff0d4e382' });
+const renderApp = async () => {
+  const LDProvider = await asyncWithLDProvider({ clientSideID });
+  console.log("LaunchDarkly Client Side ID:", clientSideID);
+
 
   ReactDOM.render(
     <React.StrictMode>
@@ -21,6 +24,6 @@ import { asyncWithLDProvider } from "launchdarkly-react-client-sdk";
     </React.StrictMode>,
     document.getElementById("root")
   );
-  }
+};
 
-  renderApp();
+renderApp();
