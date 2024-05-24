@@ -9,7 +9,7 @@ import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
 import React from "react";
-import ProjectCard from "./ProjectCard";
+import ProductCard from "./ProductCard";
 import PurchaseCard from "./PurchaseCard";
 
 import { useFlags } from "launchdarkly-react-client-sdk";
@@ -35,7 +35,7 @@ const Projects = ({ title, description }) => {
           templateRows={{ sm: "1fr 1fr 1fr auto", md: "1fr 1fr", xl: "1fr" }}
           gap="24px"
         >
-          <ProjectCard
+          <ProductCard
             image={imageDNDDragonTalk}
             category={"Dragon Talk"}
             description={
@@ -43,7 +43,7 @@ const Projects = ({ title, description }) => {
             }
             linkName={"Read More"}
           />
-          <ProjectCard
+          <ProductCard
             image={imageDNDVirtualPlayWeekends}
             category={"Virtual Play Weekends"}
             description={
@@ -62,7 +62,7 @@ const Projects = ({ title, description }) => {
               onSale="true"
             />
           ) : (
-            <ProjectCard
+            <ProductCard
               image={imageTomTotenbergSwift}
               category={"D&D with Tom Swift"}
               description={

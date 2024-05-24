@@ -4,13 +4,13 @@ import React from "react";
 
 import { useLDClient } from "launchdarkly-react-client-sdk";
 
-const ProjectCard = ({ image, name, category, description, linkName }) => {
+const ProductCard = ({ image, name, category, description, linkName }) => {
   const ldClient = useLDClient();
 
   const handlePurchaseClick = () => {
     if (ldClient) {
-      ldClient.track("Purchase Button Click", { cardType: "ProjectCard" });
-      console.log('Event sent: Purchase Button Click', { cardType: "ProjectCard" });
+      ldClient.track("Purchase Button Click", { cardType: "ProductCard" });
+      console.log('Event sent: Purchase Button Click', { cardType: "ProductCard" });
     }
   };
 
@@ -76,4 +76,4 @@ const ProjectCard = ({ image, name, category, description, linkName }) => {
   );
 };
 
-export default ProjectCard;
+export default ProductCard;
