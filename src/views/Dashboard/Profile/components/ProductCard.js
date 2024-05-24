@@ -2,13 +2,16 @@
 import { Box, Flex, Image, Text, Link } from "@chakra-ui/react";
 import React from "react";
 
+// LaunchDarkly SDK
 import { useLDClient } from "launchdarkly-react-client-sdk";
 
 const ProductCard = ({ image, name, category, description, linkName }) => {
+  // Access the LaunchDarkly client to track custom events
   const ldClient = useLDClient();
 
   const handlePurchaseClick = () => {
-    if (linkName === "Purchase") {
+    if (linkName === "Purchase") { // Only triggers when is a 'Purchase' link
+      // Track a custom event in LaunchDarkly
       ldClient.track("Purchase Button Click", { cardType: "ProductCard" });
       console.log("Event sent: Purchase Button Click", {
         cardType: "ProductCard",
@@ -68,7 +71,7 @@ const ProductCard = ({ image, name, category, description, linkName }) => {
             }}
             fontSize="xs"
             fontWeight="bold"
-            onClick={handlePurchaseClick}
+            onClick={handlePurchaseClick} // Handle click event
           >
             {linkName}
           </Link>

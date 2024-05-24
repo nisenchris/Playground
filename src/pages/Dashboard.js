@@ -1,7 +1,9 @@
 import React from "react";
+
 // Chakra imports
 import { Grid, Flex, SimpleGrid, ChakraProvider } from "@chakra-ui/react";
 import theme from "theme/theme.js";
+
 // Custom Components
 import {
   CartIcon,
@@ -14,6 +16,7 @@ import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import MiniStatistics from "components/Card/MiniStatistics";
+
 // Chart components
 import ActiveUsers from "views/Dashboard/Dashboard/components/ActiveUsers";
 import BarChart from "components/Charts/BarChart";
@@ -24,7 +27,7 @@ import SalesOverview from "views/Dashboard/Dashboard/components/SalesOverview";
 import { useFlags } from "launchdarkly-react-client-sdk";
 
 const Dashboard = () => {
-  // Destructuring the lineChart flag from LaunchDarkly feature flags
+  // Getting LaunchDarkly feature flags
   const { lineChart } = useFlags();
 
   return (
