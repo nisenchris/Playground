@@ -9,8 +9,6 @@ const clientSideID = process.env.REACT_APP_LAUNCHDARKLY_CLIENTSIDE_ID;
 
 const renderApp = async () => {
   const LDProvider = await asyncWithLDProvider({ clientSideID });
-  console.log("LaunchDarkly Client Side ID:", clientSideID);
-
 
   ReactDOM.render(
     <React.StrictMode>
