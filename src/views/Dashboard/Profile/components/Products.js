@@ -1,9 +1,11 @@
 // Chakra imports
 import { Flex, Grid, Text } from "@chakra-ui/react";
+
 // Assets
 import imageDNDDragonTalk from "assets/img/DnD_Articles_DragonTalk_1.avif";
 import imageDNDVirtualPlayWeekends from "assets/img/dnd_vpw_othermedia.avif";
 import imageTomTotenbergSwift from "assets/img/TomTotenbergSwift.jpeg";
+
 // Custom components
 import Card from "components/Card/Card";
 import CardBody from "components/Card/CardBody";
@@ -12,9 +14,11 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import PurchaseCard from "./PurchaseCard";
 
+// LaunchDarkly SDK to access feature flags
 import { useFlags } from "launchdarkly-react-client-sdk";
 
-const Projects = ({ title, description }) => {
+const Products = ({ title, description }) => {
+  // Getting LaunchDarkly feature flags
   const { purchaseCard } = useFlags();
 
   return (
@@ -51,6 +55,7 @@ const Projects = ({ title, description }) => {
             }
             linkName={"Read More"}
           />
+          {/* Switching between PurchaseCard and ProductCard based on purchaseCard flag */}
           {purchaseCard ? (
             <PurchaseCard
               image={imageTomTotenbergSwift}
@@ -77,4 +82,4 @@ const Projects = ({ title, description }) => {
   );
 };
 
-export default Projects;
+export default Products;
