@@ -45,8 +45,8 @@ const Dashboard = () => {
           minHeight="100vh"
         >
           <PanelContent w="75%">
-            <AdminNavbar />
             <PanelContainer>
+              <AdminNavbar brandText="Dashboard" />
               <SimpleGrid
                 columns={{ sm: 1, md: 2, xl: 4 }}
                 spacing="24px"

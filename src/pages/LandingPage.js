@@ -26,8 +26,8 @@ const LandingPage = () => {
           minHeight="100vh"
         >
           <PanelContent>
-            <AdminNavbar />
             <PanelContainer w="100%">
+              <AdminNavbar brandText="Landing Page"/>
               <Products
                 title={"BEGIN YOUR ADVENTURE!"}
                 description={
