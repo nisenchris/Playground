@@ -6,7 +6,6 @@ import {
   BreadcrumbLink,
   Flex,
   Link,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -14,10 +13,9 @@ import AdminNavbarLinks from "./AdminNavbarLinks";
 
 export default function AdminNavbar(props) {
   const [scrolled, setScrolled] = useState(false);
-  const { variant, children, fixed, secondary, brandText, onOpen, ...rest } =
-    props;
+  const { brandText } = props;
 
-  // Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
+  // Navbar styles
   let mainText = "gray.400";
   let secondaryText = "gray.400";
   let navbarPosition = "absolute";
@@ -32,9 +30,13 @@ export default function AdminNavbar(props) {
   return (
     <Flex
       position={navbarPosition}
-      top="0" // Fix to the top
-      width="75%" // Full width
-      zIndex="1000" // Ensure it stays on top of other elements
+      top="0" 
+      width={{
+        xl: "75%",
+        md: "100%",
+        sm: "90%",
+      }} 
+      zIndex="1000" 
       boxShadow={navbarShadow}
       bg={navbarBg}
       borderColor={navbarBorder}
@@ -67,7 +69,6 @@ export default function AdminNavbar(props) {
       <Flex
         w="100%"
         flexDirection={{
-          sm: "column",
           md: "row",
         }}
         alignItems={{ xl: "center" }}
@@ -85,33 +86,16 @@ export default function AdminNavbar(props) {
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          {/* Here we create navbar brand, based on route name */}
           <Link
-            // color="inherit"
             href="#"
             bg="inherit"
-            // borderRadius="inherit"
             fontWeight="bold"
-            // _hover={{ color: { mainText } }}
-            // _active={{
-            //   bg: "inherit",
-            //   transform: "none",
-            //   borderColor: "transparent",
-            // }}
-            // _focus={{
-            //   boxShadow: "none",
-            // }}
           >
             {brandText}
           </Link>
         </Box>
-        <Box ms="auto" w={{ sm: "100%", md: "unset" }}>
-          <AdminNavbarLinks
-            onOpen={props.onOpen}
-            logoText={props.logoText}
-            secondary={props.secondary}
-            fixed={props.fixed}
-          />
+        <Box ms="auto" w={{  md: "unset" }}>
+          <AdminNavbarLinks />
         </Box>
       </Flex>
     </Flex>
@@ -119,9 +103,5 @@ export default function AdminNavbar(props) {
 }
 
 AdminNavbar.propTypes = {
-  brandText: PropTypes.string,
-  variant: PropTypes.string,
-  secondary: PropTypes.bool,
-  fixed: PropTypes.bool,
-  onOpen: PropTypes.func,
+  brandText: PropTypes.string.isRequired,
 };

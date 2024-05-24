@@ -44,7 +44,7 @@ export default function HeaderLinks(props) {
       alignItems="center"
       flexDirection="row"
     >
-      <InputGroup
+      {/* <InputGroup
         cursor="pointer"
         bg={inputBg}
         borderRadius="15px"
@@ -85,7 +85,7 @@ export default function HeaderLinks(props) {
           placeholder="Type here..."
           borderRadius="inherit"
         />
-      </InputGroup>
+      </InputGroup> */}
       <NavLink to="/signin">
         <Button
           ms="0px"
@@ -108,7 +108,7 @@ export default function HeaderLinks(props) {
             )
           }
         >
-          <Text display={{ sm: "none", md: "flex" }}>Sign Out</Text>
+          {/* <Text display={{ sm: "none", md: "flex" }}>Sign Out</Text> */}
         </Button>
       </NavLink>
 
