@@ -6,7 +6,7 @@ You are an engineering manager at ABC Company. Your company’s competitors seem
 ### Using LaunchDarkly
 
 **Developers:**
-- **Safe Testing in Production:** With feature flags, developers can test new features in a real-world environment without exposing them to all users. The `lineChart` feature flag, for example, allows developers to release the Line Chart component selectively, ensuring it works correctly before a full rollout.
+- **Safe Testing in Production:** With feature flags, developers can test new features in a real-world environment without exposing them to all users. The `lineChart` feature flag, for example, allows developers to release the Line Chart component selectively, ensuring it works before a full rollout.
 - **Instant Rollbacks:** If a bug is detected, developers can instantly disable the feature by toggling the flag off, with no page reload required, minimizing user impact.
 
 **Teams:**
@@ -27,7 +27,7 @@ You are a developer at ABC Company. Your organization is working on revamping yo
 ### Using LaunchDarkly
 
 **Developers:**
-- **Granular Targeting:** You can show new features, like the Line Chart component, to specific users such as `devUser` or ABC Company employees. This ensures controlled testing and immediate feedback.
+- **Granular Targeting:** Developers can show new features, like the `LineChart` component, to specific users such as `devUser` or `ABC Company` employees. This ensures controlled testing and immediate feedback.
 - **Risk Reduction:** Limiting exposure to new features reduces the chance of widespread issues.
 
 **Teams:**
@@ -48,7 +48,7 @@ You are a product manager at ABC Company. Your organization has been working on 
 ### Using LaunchDarkly
 
 **Developers:**
-- **Data-Driven Development:** Experiments like the `Purchase Card` randomly shows different styles of a card component and tracks user interactions with the `Purchase Button`. This data helps developers understand what works best.
+- **Data-Driven Development:** Experiments like the `Purchase Card` randomly shows different styles of a card component and tracks product purchases. This data helps developers understand what works best.
 - **Continuous Improvement:** Developers can iterate on features based on real user data, ensuring continuous enhancement.
 
 **Teams:**
