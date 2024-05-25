@@ -4,6 +4,8 @@
 
 This project is a sample implementation demonstrating the usage of LaunchDarkly with a React application. The application showcases feature flags, custom events, metrics and experiments using LaunchDarkly. The project also utilizes Chakra UI for styling and layout.
 
+[LaunchDarkly Assignment](docs/LaunchDarkly%20Assignment.md) explains how LaunchDarkly can speed up feature delivery while ensuring high-quality releases. It covers the three key scenarios from the Assignment: Release and Remediate, Target, and Experimentation, highlighting the benefits for developers, teams, and leadership in achieving faster, safer, and effective feature management.
+
 ## Features
 
 - Feature flag management with LaunchDarkly
