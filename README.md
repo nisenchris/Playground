@@ -7,27 +7,27 @@ This project is a sample implementation demonstrating the usage of LaunchDarkly 
 ## Features
 
 - Feature flag management with LaunchDarkly
-- Custom events tracking for user interactions
+- Custom events tracking
 - Flag triggers for automation
 - Metrics tracking and experiments
 - Responsive UI with Chakra UI
 
 ## Prerequisites
 
-Before you begin, ensure you have the following installed on your machine:
+Ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (version 12 or higher)
 - [Git](https://git-scm.com/)
 
 ## Setup Instructions
 
-Follow these steps to set up and run the project locally on your machine:
+Follow these steps to set up and run the project locally:
 
 ### Step 1: Clone the Repository
 
-1. Open your terminal or command prompt.
-2. Navigate to the directory where you want to clone the project.
-3. Run the following command to clone the repository:
+1. Open your terminal.
+2. Navigate to your desired directory.
+3. Clone the repository:
 
    ```bash
    git clone https://github.com/nisenchris/LaunchDarkly-Assignment.git
@@ -35,7 +35,7 @@ Follow these steps to set up and run the project locally on your machine:
 
 ### Step 2: Navigate to the Project Directory
 
-1. Change into the project directory:
+1. Change to the project directory:
 
    ```bash
    cd LaunchDarkly-Assignment
@@ -43,7 +43,7 @@ Follow these steps to set up and run the project locally on your machine:
 
 ### Step 3: Install Project Dependencies
 
-1. Install the project dependencies using npm:
+1. Install dependencies using npm:
 
    ```bash
    npm install
@@ -51,8 +51,8 @@ Follow these steps to set up and run the project locally on your machine:
 
 ### Step 4: Create an Environment File
 
-1. Create a `.env` file in the root directory of the project.
-2. Add LaunchDarkly's SDK Key as an environment variable. 
+1. Create a `.env` file in the root directory.
+2. Add your LaunchDarkly SDK Key:
 
    ```env
    REACT_APP_LAUNCHDARKLY_CLIENTSIDE_ID=your-client-side-id
@@ -66,23 +66,70 @@ Follow these steps to set up and run the project locally on your machine:
    npm start
    ```
 
-2. This command will start the development server and open your project in the default web browser. If it doesn’t open automatically, you can access it by navigating to `http://localhost:3000` in your web browser.
+2. This will open your project in the default web browser at `http://localhost:3000/Dashboard`. If it doesn’t open automatically, navigate there manually.
 
-<!-- ### Step 6: Verify the Application
+## Configure LaunchDarkly
 
-1. Ensure the application loads correctly.
-2. Navigate through the various pages (e.g., landing page, sign-in page, dashboard) to verify that they function as expected.
-3. Verify that the feature flags are working correctly by toggling them on and off in your LaunchDarkly account and observing the changes in the application.
+### Create Feature Flags
+1. **Flag Key**: `lineChart`
+   - **Configuration**: Custom
+   - **Flag type**: Boolean
+   - **Client-side SDK availability:** SDKs using Client-side ID
+2. **Flag Key**: `newChartData`
+   - **Configuration**: Custom
+   - **Flag type**: Boolean
+   - **Client-side SDK availability:** SDKs using Client-side ID
+   - **Optional**: Create a [trigger rule](https://docs.launchdarkly.com/home/releases/triggers?site=launchDarkly#create-flag-triggers). 
+3. **Flag Key**: `purchaseCard`
+   - **Configuration**: Custom
+   - **Flag type**: Boolean
+   - **Client-side SDK availability:** SDKs using Client-side ID
+   - Turn it on.
+### Create a Metric
 
-### Step 7: Test the Purchase Button Tracking
+1. **Name**: purchase-button-click
+2. **Event Type**: Custom
+3. **Event Key**: `Purchase Button Click`
+4. **Success Criteria**: Higher than baseline
+5. **Unit Aggregation Method**: Sum individual unit values
+6. **Analysis Method**: Mean
+7. **Randomization Units**: Users
 
-1. Click on the purchase buttons in both `ProductCard` and `PurchaseCard`.
-2. Check your LaunchDarkly dashboard to ensure the events are being tracked correctly.
+### Create an Experiment
+1. **Name**: "Purchase Card"
+2. **Hypothesis**: "A dedicated card with a clear CTA will increase product purchases."
+3. **Experiment Type**: Feature change
+4. **Randomization Unit**: User
+5. **Audience Attributes**: Select relevant attributes for analysis.
+6. **Select Metrics**: Choose `purchase-button-click`
+7. **Flag Variations**: Choose `purchaseCard`
+8. **Set Audience**: Default rule serving 50% true and 50% false.
+9. **Finish and Start the Experiment**.
 
-### Step 8: Check the Console for Errors
+## Verify the Application
 
-1. Open the browser’s developer console (usually accessible by pressing `F12` or `Ctrl+Shift+I`).
-2. Ensure there are no errors or warnings that need to be addressed. -->
+### Scenario 1: Release and Remediate
+1. Disable `lineChart` and `newChartData` flags.
+2. Visit `http://localhost:3000/Dashboard`.
+3. Enable `lineChart` Flag.
+4. The new chart should appear.
+5. `newChartData` simulates a data migration. Enable it to start using the new data.
+6. An incomplete chart and a console error will appear: `"Error: newChartData flag is enabled and causing issues."`
+7. Disable the `newChartData` flag using the flag trigger or manually to rollback without impacting customers.
+
+### Scenario 2: Target
+1. Add rules to the `lineChart` flag. Example rules:
+   - **Target Individuals**: User: `devUser`
+   - **Custom Rule**: user email ends with `@abccompany.com`.
+2. Test with different users at `http://localhost:3000/signin`.
+
+### Scenario 3: Experimentation
+1. With the "Purchase Card" experiment running:
+2. Visit `http://localhost:3000/` in incognito mode.
+3. You might see a different card designs.
+4. Click the Purchase link or button to track events.
+5. Repeat to generate experiment data.
+5. Check `Metrics > activity` or `Experiments > results` in LaunchDarkly.
 
 ## Contributing
 
