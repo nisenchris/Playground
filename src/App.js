@@ -11,7 +11,7 @@ function App() {
       <Switch>
         <Route path="/signin" render={(props) => <SignIn setUser={setUser} {...props} />} />
         <Route path="/dashboard" render={(props) => <Dashboard user={user} setUser={setUser} {...props} />} />
-        <Route path="/" component={LandingPage} />  {/* Add LandingPage route */}
+        <Route path="/" component={LandingPage} /> 
       </Switch>
   );
 }
