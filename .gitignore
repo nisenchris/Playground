@@ -34,7 +34,6 @@ jspm_packages/
 dist/
 build/
 .cache/
-public/
 
 # Next.js
 .next/
