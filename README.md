@@ -25,7 +25,7 @@ Ensure you have the following installed:
 
 Follow these steps to set up and run the project locally:
 
-### Step 1: Clone the Repository
+
 
 1. Open your terminal.
 2. Navigate to your desired directory.
@@ -34,41 +34,28 @@ Follow these steps to set up and run the project locally:
    ```bash
    git clone https://github.com/nisenchris/LaunchDarkly-Assignment.git
    ```
-
-### Step 2: Navigate to the Project Directory
-
-1. Change to the project directory:
+4. Navigate to the Project Directory:
 
    ```bash
    cd LaunchDarkly-Assignment
    ```
-
-### Step 3: Install Project Dependencies
-
-1. Install dependencies using npm:
+5. Install Project Dependencies using npm:
 
    ```bash
    npm install
    ```
-
-### Step 4: Create an Environment File
-
-1. Create a `.env` file in the root directory.
-2. Add your LaunchDarkly SDK Key:
+6. Create a `.env` file in the root directory.
+7. Add your LaunchDarkly SDK Key:
 
    ```env
    REACT_APP_LAUNCHDARKLY_CLIENTSIDE_ID=your-client-side-id
    ```
-
-### Step 5: Start the Development Server
-
-1. Start the development server using npm:
+8. Start the development server using npm:
 
    ```bash
    npm start
    ```
-
-2. This will open your project in the default web browser at `http://localhost:3000/Dashboard`. If it doesn’t open automatically, navigate there manually.
+9. This will open your project in the default web browser at `http://localhost:3000/Dashboard`. If it doesn’t open automatically, navigate there manually.
 
 ## Configure LaunchDarkly
 
@@ -131,7 +118,7 @@ Follow these steps to set up and run the project locally:
 3. You might see a different card designs.
 4. Click the Purchase link or button to track events.
 5. Repeat to generate experiment data.
-5. Check `Metrics > activity` or `Experiments > results` in LaunchDarkly.
+5. Check **Metrics > activity** and **Experiments > results** in LaunchDarkly.
 
 ## Contributing
 
