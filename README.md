@@ -133,5 +133,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [LaunchDarkly](https://launchdarkly.com/)
 - [Chakra UI](https://chakra-ui.com/)
 - [Creative Tim](https://www.creative-tim.com/)
-
-By following these instructions, you should be able to set up and run the project locally on your machine successfully. If you encounter any issues, please refer to the documentation or open an issue in the repository.
