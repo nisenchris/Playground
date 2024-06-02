@@ -23,7 +23,7 @@ import BarChart from "components/Charts/BarChart";
 import LineChart from "components/Charts/LineChart";
 import SalesOverview from "components/Charts/SalesOverview";
 
-// LaunchDarkly SDK to access feature flags
+// LaunchDarkly SDK to access feature flags directive
 import { useFlags } from "launchdarkly-react-client-sdk";
 
 const Dashboard = () => {
