@@ -11,7 +11,7 @@ const PurchaseCard = ({ image, name, description, isNew, onSale }) => {
   const handlePurchaseClick = () => {
     if (ldClient) {
       // Track a custom event in LaunchDarkly
-      ldClient.track("Purchase Button Click", { cardType: "PurchaseCard" });
+      ldClient.track("purchase-button-click", { cardType: "PurchaseCard" });
       console.log('Event sent: Purchase Button Click', { cardType: "PurchaseCard" });
     }
   };

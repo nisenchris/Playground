@@ -12,7 +12,7 @@ const ProductCard = ({ image, name, category, description, linkName }) => {
   const handlePurchaseClick = () => {
     if (linkName === "Purchase") { // Only triggers when is a 'Purchase' link
       // Track a custom event in LaunchDarkly
-      ldClient.track("Purchase Button Click", { cardType: "ProductCard" });
+      ldClient.track("purchase-button-click", { cardType: "ProductCard" });
       console.log("Event sent: Purchase Button Click", {
         cardType: "ProductCard",
       });
