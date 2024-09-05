@@ -78,7 +78,7 @@ Follow these steps to set up and run the project locally:
 
 1. **Name**: purchase-button-click
 2. **Event Type**: Custom
-3. **Event Key**: `Purchase Button Click`
+3. **Event Key**: `purchase-button-click`
 4. **Success Criteria**: Higher than baseline
 5. **Unit Aggregation Method**: Sum individual unit values
 6. **Analysis Method**: Mean
