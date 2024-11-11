@@ -16,6 +16,7 @@ import PanelContainer from "../components/Layout/PanelContainer";
 import PanelContent from "../components/Layout/PanelContent";
 import AdminNavbar from "components/Navbars/AdminNavbar";
 import MiniStatistics from "components/Card/MiniStatistics";
+import SalesTable from "../components/SalesTable";
 
 // Chart components
 import ActiveUsers from "components/Charts/ActiveUsers";
@@ -78,6 +79,14 @@ const Dashboard = () => {
                   icon={<CartIcon h={"24px"} w={"24px"} color={"white"} />}
                 />
               </SimpleGrid>
+              {/* New grid for SalesTable */}
+              <SimpleGrid
+                templateColumns={{ sm: "1fr" }}
+                gap="24px"
+                mb={{ lg: "26px" }}
+              >
+                <SalesTable />
+              </SimpleGrid>
               <Grid
                 templateColumns={{ sm: "1fr", lg: "1.3fr 1.7fr" }}
                 templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
@@ -89,13 +98,9 @@ const Dashboard = () => {
                   percentage={23}
                   chart={<BarChart />}
                 />
-                {/* Line Chart component only displays when lineChart flag is enabled */}
+                {/* Remove lineChart */}
                 {lineChart ? (
-                  <SalesOverview
-                    title={"Sales Overview"}
-                    percentage={25}
-                    chart={<LineChart />}
-                  />
+                  <div />
                 ) : (
                   <div />
                 )}
